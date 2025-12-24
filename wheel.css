@@ -1,0 +1,138 @@
+@import url('style.css');
+/* Import base styles */
+
+/* Wheel Specifics */
+.wheel-stage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    height: 700px;
+}
+
+.wheel-wrapper {
+    position: relative;
+    width: 900px;
+    height: 900px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.wheel-container {
+    position: relative;
+    width: 900px;
+    height: 900px;
+    border-radius: 50%;
+    /* Transparent background */
+    background: transparent;
+    overflow: visible;
+    /* Allow images to poke out if needed, though Canvas is inside */
+    /* Fixed: Immediate fast start, long finish (Explosion -> Coast) */
+    transition: transform 10s cubic-bezier(0, 0.75, 0.15, 1);
+    /* Performance Boost */
+    will-change: transform;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    /* Force GPU */
+}
+
+#wheel-canvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+/* Pointer at the top */
+.pointer {
+    position: absolute;
+    top: -25px;
+    /* Overlap the border slightly */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 80px;
+    background-color: #ff4757;
+    clip-path: polygon(50% 100%, 0% 0%, 100% 0%);
+    z-index: 20;
+    filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.3));
+}
+
+/* Static Center Spin Button */
+.center-spin-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* Centers it perfectly relative to wrapper */
+    width: 70px;
+    /* Smaller */
+    height: 70px;
+    border-radius: 50%;
+    background: white;
+    border: 3px solid var(--primary);
+    color: var(--dark);
+    font-weight: 800;
+    font-size: 1rem;
+    box-shadow: 0 0 20px rgba(255, 77, 140, 0.4);
+    z-index: 30;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-shadow: none;
+    transition: all 0.5s ease;
+}
+
+.center-spin-btn.hidden {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0);
+    pointer-events: none;
+}
+
+.center-spin-btn:hover {
+    /* Keep centering, just scale */
+    transform: translate(-50%, -50%) scale(1.1);
+    box-shadow: 0 0 30px rgba(255, 77, 140, 0.6);
+}
+
+.center-spin-btn:active {
+    transform: translate(-50%, -50%) scale(0.95);
+}
+
+.center-spin-btn:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    transform: translate(-50%, -50%);
+}
+
+/* Nav Switcher */
+.mode-switch {
+    margin: 0;
+    display: flex;
+    gap: 15px;
+}
+
+.mode-btn {
+    text-decoration: none;
+    padding: 10px 20px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 20px;
+    color: var(--dark);
+    font-weight: 700;
+    transition: all 0.3s;
+    border: 1px solid white;
+}
+
+.mode-btn:hover,
+.mode-btn.active {
+    background: white;
+    color: var(--primary);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}

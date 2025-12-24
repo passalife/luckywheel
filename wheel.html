@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lucky Draw - B4</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Confetti Library -->
+    <script src="confetti.js"></script>
+</head>
+
+<body>
+
+    <header>
+        <h1>VÒNG QUAY MAY MẮN</h1>
+        <div class="mode-switch" style="display:flex; gap:15px; justify-content:center;">
+            <a href="index.html" class="mode-btn"
+                style="text-decoration:none; padding:10px 20px; background:rgba(255,255,255,0.3); color:white; border-radius:20px; font-weight:700; border:1px solid white;">Chiếc
+                Nón Diệu Kỳ</a>
+            <a href="wheel.html" class="mode-btn active"
+                style="text-decoration:none; padding:10px 20px; background:white; color:#FF4D8C; border-radius:20px; font-weight:700;">Ngân
+                Hà</a>
+        </div>
+    </header>
+
+    <main class="stage">
+        <div class="orbit-system" id="orbit-system">
+            <!-- Center Button -->
+            <div class="center-hub">
+                <button id="spin-btn">QUAY</button>
+            </div>
+
+            <!-- Rings will be injected by JS -->
+            <div class="orbit-ring ring-inner" id="ring-inner"></div>
+            <div class="orbit-ring ring-outer" id="ring-outer"></div>
+        </div>
+
+        <!-- Hidden old elements to keep logic happy until refactor is complete -->
+        <div class="card-frame" id="card-frame" style="display: none;">
+            <img src="" alt="Child" class="card-image" id="display-img" style="display:none;">
+            <div class="placeholder-icon" id="placeholder-icon"></div>
+            <div class="card-name" id="display-name"></div>
+        </div>
+    </main>
+
+    <section class="chosen-section">
+        <h2>ĐÃ CHỌN (<span id="count">0</span>)</h2>
+        <div class="chosen-list" id="chosen-list">
+            <!-- Winners will go here -->
+        </div>
+    </section>
+
+    <!-- Overlay Popup -->
+    <div class="overlay" id="overlay">
+        <div class="winner-card">
+            <img src="" id="winner-img" alt="Winner">
+            <h2 id="winner-name">Tên Bé</h2>
+            <p>Chúc mừng!</p>
+        </div>
+    </div>
+
+    <!-- Audio (Optional sound effects could go here if I had files, but I'll skip for now) -->
+
+    <script src="wheel.js"></script>
+</body>
+
+</html>

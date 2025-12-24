@@ -7,7 +7,7 @@ const childrenData = [
     "Yến Nhi 2.jpg", "Đình Hoàng.jpg", "Đăng Khoa.jpg", "Đức Minh.jpg", "Đức Toàn.jpg"
 ];
 
-const IMAGE_FOLDER = "ẢNH CỦA TRẺ B4/";
+const IMAGE_FOLDER = "/";
 
 // State
 let available = [...childrenData];
